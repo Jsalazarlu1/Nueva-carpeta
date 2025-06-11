@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="/3.Programacion/css/style.css">
+    <link rel="icon" href="/3.Programacion/img/c.jpg" type="image/x-icon">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7f7f7;
+        }
+
+        .login-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            margin-top: 1.5rem;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #d02568;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="/3.Programacion/img/logo.jpg" alt="Logo CESDE" class="logo-cesde">
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm">
+            <input type="text" id="usuario" placeholder="Usuario" required>
+            <input type="password" id="contrasena" placeholder="Contraseña" required>
+            <button type="submit">Ingresar</button>
+            <div class="error" id="errorMensaje"></div>
+        </form>
+    </div>
+
+    <script>
+        const formulario = document.getElementById("loginForm");
+        const errorMensaje = document.getElementById("errorMensaje");
+
+        formulario.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const usuario = document.getElementById("usuario").value;
+            const contrasena = document.getElementById("contrasena").value;
+
+            // Usuario y contraseña predeterminados
+            const usuarioCorrecto = "admin";
+            const contrasenaCorrecta = "1234";
+
+            if (usuario === usuarioCorrecto && contrasena === contrasenaCorrecta) {
+                // Redirige al sistema académico
+                window.location.href = "index.html";
+            } else {
+                errorMensaje.textContent = "Usuario o contraseña incorrectos.";
+            }
+        });
+    </script>
+</body>
+</html>

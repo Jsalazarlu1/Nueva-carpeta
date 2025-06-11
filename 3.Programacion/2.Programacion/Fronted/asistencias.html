@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistencia del Estudiante</title>
+    <link rel="icon" href="/3.Programacion/img/c.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="/3.Programacion/css/style.css">
+    <img src="/3.Programacion/img/logo.jpg" alt="Logo CESDE" class="logo-cesde">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css" />
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+            <h1><i class="fas fa-graduation-cap"></i> Sistema Académico</h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="estudiantes.html"><i class="fas fa-users"></i> Estudiantes</a></li>
+                <li><a href="calificaciones.html"><i class="fas fa-check-circle"></i> Calificaciones</a></li>
+                <li><a href="asistencias.html"><i class="fas fa-calendar-check"></i> Asistencias</a></li>
+                <li><a href="login.html"><i class="fas fa-door-open"></i> Salir</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dashboard">
+        <section class="recent-activity">
+            <h2><i class="fas fa-calendar-check"></i> Asistencia del Estudiante</h2>
+            <h3>Asistencia de Andres Felipe Mesa Torres</h3>
+            <div id="calendar"></div> <!-- Calendario dinámico aquí -->
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Sistema de Gestión Académica &copy; 2025 - Proyecto Final</p>
+        <p>Jorge Luis Salazar Pérez, Laura Rojas Marín, Milena Calderon, Julian Ciro</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                events: [
+                    // Eventos de asistencia (falta)
+                    {
+                        title: 'Falta',
+                        start: '2025-06-10',
+                        color: '#e74c3c',  // Rojo (falta)
+                        description: 'Falta sin justificación'
+                    },
+                    {
+                        title: 'Falta',
+                        start: '2025-05-08',
+                        color: '#e74c3c',  // Rojo (falta)
+                        description: 'Falta sin justificación'
+                    },
+                     {
+                        title: 'Falta',
+                        start: '2025-04-23',
+                        color: '#e74c3c',  // Rojo (falta)
+                        description: 'Falta sin justificación'
+                    },
+                     {
+                        title: 'Falta',
+                        start: '2025-03-18',
+                        color: '#e74c3c',  // Rojo (falta)
+                        description: 'Falta sin justificación'
+                    },
+
+                    {
+                        title: 'Asistencia',
+                        start: '2025-06-02',
+                        color: '#2ecc71',  // Verde (Justificada)
+                        description: 'Asistencia Justificada Enfermedad'
+                    },
+
+                      {
+                        title: 'Asistencia',
+                        start: '2025-02-25',
+                        color: '#2ecc71',  // Verde (Justificada)
+                        description: 'Asistencia Justificada Error matricula'
+                    },
+                    // Puedes agregar más eventos de falta o asistencia aquí
+                ],
+                eventClick: function(calEvent, jsEvent, view) {
+                    alert('Descripción: ' + calEvent.description);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
