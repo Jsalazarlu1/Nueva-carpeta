@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Promedios Académicos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .riesgo {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Promedios de Estudiantes</h1>
+<button onclick="calcularPromedios()">Calcular Promedios</button>
+
+<table id="tabla">
+  <thead>
+    <tr>
+      <th>Estudiante</th>
+      <th>Nota 1</th>
+      <th>Nota 2</th>
+      <th>Nota 3</th>
+      <th>Promedio</th>
+    </tr>
+  </thead>
+  <tbody id="cuerpoTabla"></tbody>
+</table>
+
+<p id="resultado"></p>
+
+<script>
+  const notas = [
+    [3.5, 4.0, 4.2],
+    [4.0, 4.5, 4.7],
+    [3.0, 3.2, 3.4],
+    [2.8, 3.0, 3.1],
+    [4.0, 3.9, 4.1],
+    [4.5, 4.6, 4.7],
+    [3.5, 3.6, 3.7]
+  ];
+
+  function calcularPromedios() {
+    const cuerpo = document.getElementById("cuerpoTabla");
+    const resultado = document.getElementById("resultado");
+    cuerpo.innerHTML = "";
+    let riesgo = [];
+
+    notas.forEach((estudiante, i) => {
+      const promedio = (estudiante[0] + estudiante[1] + estudiante[2]) / 3;
+      const fila = document.createElement("tr");
+
+      fila.innerHTML = `
+        <td>Estudiante ${i + 1}</td>
+        <td>${estudiante[0]}</td>
+        <td>${estudiante[1]}</td>
+        <td>${estudiante[2]}</td>
+        <td class="${promedio < 3.0 ? 'riesgo' : ''}">${promedio.toFixed(2)}</td>
+      `;
+
+      cuerpo.appendChild(fila);
+
+      if (promedio < 3.0) {
+        riesgo.push(i + 1);
+      }
+    });
+
+    if (riesgo.length > 0) {
+      resultado.innerHTML = `Estudiantes en <strong class=\"riesgo\">riesgo académico</strong> (<3.0): ${riesgo.length}. Posiciones: ${riesgo.join(', ')}`;
+    } else {
+      resultado.textContent = "Ningún estudiante está en riesgo académico.";
+    }
+  }
+</script>
+
+</body>
+</html>
